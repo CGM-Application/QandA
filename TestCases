@@ -1,1 +1,23 @@
 Possible Test cases
+1. Adding a Question
+Positive Tests
+*  Check len(Question) > 0 and len(Question) < 256
+*  Check regex % ? "%"
+
+
+Negative Tests
+* Check len(Question) > 256
+* Check len(Question) is NULL
+* Check len (Answer) is NULL
+* Check invalid characters in the string (Question)
+
+
+2. Asking a Question
+Positive Tests
+* Check the format of the question "% ?"
+* Match the string: Entered string with the existing string
+
+
+Negative Tests
+* Check the format of the question "% ?"
+* Does not Match the string: Entered string with the existing string
