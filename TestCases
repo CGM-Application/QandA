@@ -1,8 +1,11 @@
 Possible Test cases
 1. Adding a Question
 Positive Tests
-*  Check len(Question) > 0 and len(Question) < 256
-*  Check regex % ? "%"
+*  Check len(Question) not null and len(Question) < 256
+*  Check validate Question format "% ? "%" %"
+*  Check validate answer format
+*  Check for saving the question
+
 
 
 Negative Tests
@@ -12,12 +15,14 @@ Negative Tests
 * Check invalid characters in the string (Question)
 
 
+
 2. Asking a Question
 Positive Tests
 * Check the format of the question "% ?"
-* Match the string: Entered string with the existing string
+* Check for getting the answer When Question exactly matched
+
 
 
 Negative Tests
 * Check the format of the question "% ?"
-* Does not Match the string: Entered string with the existing string
+* Checked for getting the answer When Question does not exactly matched: "The answer to life, universe and everything is 42"
