@@ -1,28 +1,82 @@
-Possible Test cases
-1. Adding a Question
-Positive Tests
-*  Check len(Question) not null and len(Question) < 256
-*  Check validate Question format "% ? "%" %"
-*  Check validate answer format
-*  Check for saving the question
+Possible Test Cases:
+
+Feature: Asking a Question
+Background: Given the user is on Question / Answer page
+
+Scenario: Display answer from the database
+When the user input the Question
+And the Question is available in the database
+Then the user should see the answer on the screen
+
+Scenario: Display hardcoded answer
+When the user input the Question
+And the Question does not match with the database questions
+Then the user should see “the answer to life, universe and everything is 42”
+
+
+Feature: Adding a Question
+Background: Given the user is on Question/Answer page
+
+
+Scenario: Adding a Question with correct format
+When the user input the Question
+And the Question format is correct
+And one or more answer is in that string
+Then the system should be able to save the Question in the database
+
+Scenario: Adding an Answer with correct format
+When the user input the Answer
+And the Answer format is correct
+Then the system should be able to save the question with the answer in the database.
+
+
+Scenario: Adding a Answer with Wrong Question Format
+When the user input the Question
+And the format of the question is not correct
+Then the system should be able to display the appropriate error message
+And the system should not save that question
+
+Scenario: Adding a answer with wrong Answer Format
+When the user input the Answer
+And the format of the Answer is not correct
+Then the system should be able to display the appropriate error message
+And the system should not save that question
+
+
+Scenario: Adding Question with the Valid length
+When the user input the Question
+And the length of Question is less than 255 and not NULL
+Then the system should be able to save that question
 
 
 
-Negative Tests
-* Check len(Question) > 256
-* Check len(Question) is NULL
-* Check len (Answer) is NULL
-* Check invalid characters in the string (Question)
+Scenario: Adding a Question with Invalid length of Question
+When the user input the Question
+And the length of Question is greater than 255 or NULL
+Then the system should display an appropriate message
+And the System should not save that Question
+
+
+Scenario: Adding Answer with the Valid length
+When the user input the Answer
+And the length of Answer is less than 255 and not NULL
+Then the system should be able to save that answer
+
+
+Scenario: Adding Invalid length of Answer
+When the user input the Answer
+And the length of Answer is greater than 255 or length of Answer is null
+Then the system should display an appropriate error message
+And the System should not save that Answer
+
+
+Scenario: Adding a Question with Empty Answer String
+When the user input Question and Answer
+And the length of Answer is NULL
+Then the system should display an appropriate error message
+AND System should not save the Question in the database
 
 
 
-2. Asking a Question
-Positive Tests
-* Check the format of the question "% ?"
-* Check for getting the answer When Question exactly matched
 
 
-
-Negative Tests
-* Check the format of the question "% ?"
-* Checked for getting the answer When Question does not exactly matched: "The answer to life, universe and everything is 42"
