@@ -1,3 +1,5 @@
+
+
 package com.cgm.qanda.util;
 
 import com.cgm.qanda.QnAApplication;
@@ -12,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
-@ContextConfiguration(classes = QnAApplication.class,
+@ContextConfiguration(
         initializers = ConfigFileApplicationContextInitializer.class)
 public class TestValidationUtil {
     @Test
@@ -30,8 +32,22 @@ public class TestValidationUtil {
     }
 
     @Test
+    public void testValidateQuestionFormat() {
+        String input = "this is input " + "?";
+        boolean validate = ValidationUtil.validateQuestionFormat(input);
+        assertEquals(true, validate);
+    }
+
+    @Test
+    public void testValidateQuestionFormatFailure() {
+        String input = "this is wrong input";
+        boolean validate = ValidationUtil.validateQuestionFormat(input);
+        assertEquals(false, validate);
+    }
+
+    @Test
     public void testValidateAnswerFormat() {
-        String input = "this is input " + "\"" + "test";
+        String input = "this is input " + "\"";
         boolean validate = ValidationUtil.validateAnswerFormat(input);
         assertEquals(true, validate);
     }
@@ -42,4 +58,8 @@ public class TestValidationUtil {
         boolean validate = ValidationUtil.validateAnswerFormat(input);
         assertEquals(false, validate);
     }
+
 }
+
+
+

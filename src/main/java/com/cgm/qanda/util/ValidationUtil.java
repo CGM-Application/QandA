@@ -14,4 +14,13 @@ public class ValidationUtil {
         }
         return false;
     }
+    public static boolean validateQuestionFormat(String input) {
+        if (input.contains("?")) {
+            return true;
+        }
+        return false;
+    }
+
+
+
 }
